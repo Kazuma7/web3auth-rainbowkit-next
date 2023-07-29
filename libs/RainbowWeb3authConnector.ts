@@ -25,7 +25,7 @@ export const rainbowWeb3AuthConnector = ({ chains }: any) => {
     chainConfig,
     uiConfig: {
       theme: "light",
-      loginMethodsOrder: ["twitter", "google"],
+      loginMethodsOrder: ["google", "apple", "line", "twitter"],
       defaultLanguage: "en",
       appLogo: iconUrl, // Your App Logo Here
       modalZIndex: "2147483647",
