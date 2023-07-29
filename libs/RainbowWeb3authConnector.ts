@@ -2,7 +2,7 @@ import { Web3AuthConnector } from "@web3auth/web3auth-wagmi-connector";
 import { Web3Auth } from "@web3auth/modal";
 import { OpenloginAdapter } from "@web3auth/openlogin-adapter";
 import { EthereumPrivateKeyProvider } from "@web3auth/ethereum-provider";
-import { CHAIN_NAMESPACES, WALLET_ADAPTERS } from "@web3auth/base";
+import { CHAIN_NAMESPACES } from "@web3auth/base";
 
 const name = "Web3auth";
 const iconUrl =
@@ -39,6 +39,7 @@ export const rainbowWeb3AuthConnector = ({ chains }: any) => {
   const privateKeyProvider = new EthereumPrivateKeyProvider({
     config: { chainConfig },
   });
+
   const openloginAdapterInstance = new OpenloginAdapter({
     privateKeyProvider,
     adapterSettings: {
@@ -49,11 +50,12 @@ export const rainbowWeb3AuthConnector = ({ chains }: any) => {
         logoLight: iconUrl,
         logoDark: iconUrl,
         defaultLanguage: "en",
-        dark: true, // whether to enable dark mode. defaultValue: false
+        dark: true,
       },
     },
   });
   web3AuthInstance.configureAdapter(openloginAdapterInstance);
+
   return {
     id: "web3auth",
     name,
@@ -64,43 +66,6 @@ export const rainbowWeb3AuthConnector = ({ chains }: any) => {
         chains: chains,
         options: {
           web3AuthInstance,
-          modalConfig: {
-            [WALLET_ADAPTERS.OPENLOGIN]: {
-              loginMethods: {
-                google: {
-                  name: "google login",
-                  logoDark:
-                    "url to your custom logo which will shown in dark mode",
-                },
-                facebook: {
-                  // it will hide the facebook option from the Web3Auth modal.
-                  name: "facebook login",
-                  showOnModal: false,
-                },
-              },
-              label: "Login with Openlogin",
-            },
-            [WALLET_ADAPTERS.WALLET_CONNECT_V1]: {
-              showOnModal: false,
-              label: "Login with WalletConnect",
-            },
-            [WALLET_ADAPTERS.WALLET_CONNECT_V2]: {
-              showOnModal: false,
-              label: "Login with WalletConnect",
-            },
-            [WALLET_ADAPTERS.TORUS_EVM]: {
-              showOnModal: false,
-              label: "Login with Torus",
-            },
-            [WALLET_ADAPTERS.METAMASK]: {
-              showOnModal: false,
-              label: "Login with Metamask",
-            },
-            [WALLET_ADAPTERS.COINBASE]: {
-              showOnModal: false,
-              label: "Login with Coinbase",
-            },
-          },
         },
       });
       return {
