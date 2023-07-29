@@ -8,7 +8,6 @@ import { createConfig, WagmiConfig, configureChains } from "wagmi";
 import { mainnet, polygon } from "wagmi/chains";
 import {
   walletConnectWallet,
-  rainbowWallet,
   metaMaskWallet,
 } from "@rainbow-me/rainbowkit/wallets";
 import { alchemyProvider } from "wagmi/providers/alchemy";
@@ -28,7 +27,6 @@ const connectors = connectorsForWallets([
   {
     groupName: "Recommended",
     wallets: [
-      rainbowWallet({ chains }),
       walletConnectWallet({ chains }),
       metaMaskWallet({ chains }),
       rainbowWeb3AuthConnector({ chains }) as any,

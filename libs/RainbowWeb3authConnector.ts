@@ -4,15 +4,16 @@ import { OpenloginAdapter } from "@web3auth/openlogin-adapter";
 import { EthereumPrivateKeyProvider } from "@web3auth/ethereum-provider";
 import { CHAIN_NAMESPACES, WALLET_ADAPTERS } from "@web3auth/base";
 
-const name = "My App Name";
-const iconUrl = "https://web3auth.io/docs/contents/logo-ethereum.png";
+const name = "Web3auth";
+const iconUrl =
+  "https://res.cloudinary.com/beincrypto/image/upload/v1661461003/logos/ukflgfdxacovx9yzyrr4.png";
 
 export const rainbowWeb3AuthConnector = ({ chains }: any) => {
   // Create Web3Auth Instance
   const chainConfig = {
     chainNamespace: CHAIN_NAMESPACES.EIP155,
     chainId: "0x" + chains[0].id.toString(16),
-    rpcTarget: chains[0].rpcUrls.default.http[0], // This is the public RPC we have added, please pass on your own endpoint while creating an app
+    rpcTarget: chains[0].rpcUrls.default.http[0],
     displayName: chains[0].name,
     tickerName: chains[0].nativeCurrency?.name,
     ticker: chains[0].nativeCurrency?.symbol,
